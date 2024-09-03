@@ -21,9 +21,8 @@ products.forEach((product) => {
           </div>
 
           <div class="product-price">
-            $${(product.priceCent / 100).toFixed(2)}
+            $${(product.priceCents/ 100).toFixed(2)}
           </div>
-
           <div class="product-quantity-container">
             <select>
               <option selected value="1">1</option>
@@ -46,11 +45,45 @@ products.forEach((product) => {
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
-            Add to Cart
+          <button class="add-to-cart-button button-primary js-add-to-cart"
+          data-product-id="${product.id}"
+          >
+            Add to Cart 
           </button>
         </div>
-  `
+  ` 
 });
 document.querySelector('.js-products-grid')
   .innerHTML = productsHTML;
+document.querySelectorAll('.js-add-to-cart')
+  .forEach((button) => {
+    button.addEventListener('click', ()=>{
+      //Fetching all the data attribute attached to Add-to-cart button from Line 49
+      const productId = button.dataset.productId; //Notice that here product-id (kebab-case) is converted into productId(camel case)
+
+      //here item is an object(in cart) containing productId and quantity in cart
+      //matchingItem is a variable that store the productId if it is present in cart
+      let matchingItem;
+      cart.forEach((item) => {
+        if (productId === item.productId) {
+          matchingItem = item;
+        }
+      });
+
+      //if matchingItem is already present in cart, then increase quantity by 1
+      if (matchingItem) {
+        productId.quantity += 1;
+      }
+      else {
+         // push the productId and quantity as an object into the cart array
+      cart.push({
+        productId: productId,
+        quantity: quantity
+      })
+      }
+
+
+     
+      console.log(cart);
+    });
+  });
