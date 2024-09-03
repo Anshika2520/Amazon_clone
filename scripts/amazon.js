@@ -72,13 +72,13 @@ document.querySelectorAll('.js-add-to-cart')
 
       //if matchingItem is already present in cart, then increase quantity by 1
       if (matchingItem) {
-        productId.quantity += 1;
+        matchingItem.quantity += 1;
       }
       else {
          // push the productId and quantity as an object into the cart array
       cart.push({
         productId: productId,
-        quantity: quantity
+        quantity: 1
       })
       }
 
