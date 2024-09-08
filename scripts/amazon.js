@@ -1,7 +1,7 @@
 import { cart } from '../data/cart.js';
 
 let productsHTML = '';
-
+ import {products} from '../data/products.js'
 
 products.forEach((product) => {
   productsHTML+=`
