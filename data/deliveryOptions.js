@@ -10,4 +10,16 @@ export const deliveryOptions = [{
   id: '3',
   deliveryDays: 1,
   priceCents: 999
-}]
+  }]
+
+export function getDeliveryOption(deliveryOptionId) {
+    
+  let deliveryOption;
+  deliveryOptions.forEach((option) => {
+    if (option.id === deliveryOptionId) {
+      deliveryOption = option;
+    }
+  });
+  // deliveryoption[0] is the default value equal to first deliveryOption when deliveryOption is not found
+  return deliveryOption || deliveryOptions[0];
+  }
