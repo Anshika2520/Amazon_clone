@@ -1,4 +1,4 @@
-import { formatCurrency } from '../scripts/utils/money.js';
+import { formatCurrency } from '../../scripts/utils/money.js';
 
 //its a syntax of jasmine
 describe('test suite : formatCurrency', () => {
